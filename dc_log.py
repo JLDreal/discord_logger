@@ -6,7 +6,7 @@ import sqlite3
 from datetime import datetime
 now = datetime.now()
 
-token = 'MTAyNjQ0ODIxODM4NjU5NTkxMg.G_V6qp.yk3-riijZ0dR0eTT4kEH1cA0Rvt171WTwblFcQ'
+token = 'TOKEN'
 
 intents = discord.Intents.default()
 
