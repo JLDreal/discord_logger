@@ -22,7 +22,7 @@ def db_stuff(dt_string,paket, autor, channel,server_name):
     print(lists)
     connection= sqlite3.connect("/home/jldreal/Dokumente/messages.db")
     corsor= connection.cursor() 
-    corsor.execute("CREATE TABLE IF NOT EXISTS messages (time TEXT, date TEXT, server_name TEXT, channel TEXT,  user TEXT, message TEXT)")
+    corsor.execute("CREATE TABLE IF NOT EXISTS messages (date TEXT, time TEXT, server_name TEXT, channel TEXT,  user TEXT, message TEXT)")
 
     corsor.executemany("insert into messages values (?,?,?,?,?,?)",lists)
     
