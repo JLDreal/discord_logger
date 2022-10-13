@@ -13,27 +13,21 @@ intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
 
-
-def log_path(dt_string, paket, autor, channel,server_name):
+def db_stuff(dt_string,paket, autor, channel,server_name):
     dayntime= dt_string.split()
-    day = datetime[0].split("/")
-    time = datetime[1]
-    year = day[2]
-    month = day[1]
-    dayy = day[0]
-    hour = dayntime[1]
+    
+    time = str(dayntime[1])
+    print(time)
+    lists =[(str(dayntime[0]),time,server_name,channel,autor,paket)]
+    print(lists)
+    connection= sqlite3.connect("/home/jldreal/Dokumente/messages.db")
+    corsor= connection.cursor() 
+    corsor.execute("CREATE TABLE IF NOT EXISTS messages (time TEXT, date TEXT, server_name TEXT, channel TEXT,  user TEXT, message TEXT)")
 
-
-
-
-
-
-
-
-
-
-    f = open("discord\dc_logger/server/"+server_name+"/"+channel+".log", "a")
-    f.write()
+    corsor.executemany("insert into messages values (?,?,?,?,?,?)",lists)
+    
+    connection.commit()
+    connection.close()
 
 
 @client.event
@@ -62,21 +56,7 @@ async def on_message(message):
       
             
         
-def db_stuff(dt_string,paket, autor, channel,server_name):
-    dayntime= dt_string.split()
-    
-    time = str(dayntime[1])
-    print(time)
-    lists =[(str(dayntime[0]),time,server_name,channel,autor,paket)]
-    print(lists)
-    connection= sqlite3.connect("/home/jldreal/Dokumente/messages.db")
-    corsor= connection.cursor() 
-    corsor.execute("CREATE TABLE IF NOT EXISTS messages (time TEXT, date TEXT, server_name TEXT, channel TEXT,  user TEXT, message TEXT)")
 
-    corsor.executemany("insert into messages values (?,?,?,?,?,?)",lists)
-    
-
-    connection.close()
 
 
 
