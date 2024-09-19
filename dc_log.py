@@ -20,7 +20,7 @@ def db_stuff(dt_string,paket, autor, channel,server_name):
     print(time)
     lists =[(str(dayntime[0]),time,server_name,channel,autor,paket)]
     print(lists)
-    connection= sqlite3.connect("/home/jldreal/Dokumente/messages.db")
+    connection= sqlite3.connect("~/Dokumente/messages.db")
     corsor= connection.cursor() 
     corsor.execute("CREATE TABLE IF NOT EXISTS messages (date TEXT, time TEXT, server_name TEXT, channel TEXT,  user TEXT, message TEXT)")
 
